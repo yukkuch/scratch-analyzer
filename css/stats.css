@@ -1,0 +1,212 @@
+/* --- プロフィールエリア --- */
+.profile-bar {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    background: #fff;
+    border: 1px solid #e9ecef;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.avatar {
+    width: 70px !important;
+    height: 70px !important;
+    border-radius: 12px;
+    border: 1px solid #eee;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.username {
+    font-size: 24px;
+    font-weight: 700; /* より力強く */
+    color: #333;
+    white-space: nowrap;
+}
+/* プロフィール内の「国」「参加日」を太くする */
+.profile-info .lab {
+    font-weight: 520;    /* 550から700へ（しっかりした太字） */
+    font-size: 14px;     /* 少しだけ大きくして読みやすく */
+    color: #495057;      /* 少しだけ色を濃く */
+   margin-left: -4px; /* これで左に5px動く */ 
+white-space: nowrap;
+}
+
+/* ついでにアイコン（📍や📅）との間隔を整える */
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;            /* 行間を少し詰めてシャープに */
+}
+
+/* --- 統計グリッド (2x2) --- */
+.grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 15px;
+    align-items: stretch; 
+}
+
+.panel {
+    background: #fff !important;
+    border: 1px solid #e9ecef !important;
+    border-radius: 12px;
+    padding: 15px 5px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.val { 
+    font-size: 26px; 
+    font-weight: 700; 
+    color: #333;
+    line-height: 1;
+    margin: 6px 0;
+}
+
+.avg-box {
+    display: inline-block;
+    background: #eef5ff; 
+    color: #4d97ff !important; 
+    padding: 4px 10px;
+    font-size: 13px;
+    border-radius: 8px;
+    font-weight: 700;
+}
+/* --- 人気作品TOP3の見出し調整 --- */
+.section-title {
+    display: block !important;
+    font-size: 20px !important;
+    font-weight: 700 !important;
+    color: #000 !important;
+    margin: 30px 0 20px 5px !important;
+    line-height: 1.2 !important;
+    
+    /* --- 棒と余白を削除 --- */
+    border-left: none !important;
+    padding-left: 0 !important;
+}
+.rank-card {
+    display: flex !important;
+    align-items: center;
+    gap: 12px;
+    background: #fff !important;
+    border: 1px solid #e9ecef !important; /* ←常に一定の色 */
+    border-radius: 12px;
+    padding: 12px;
+    margin-bottom: 8px;
+    cursor: default; /* 全体はクリック不可のカーソル */
+    transition: none; /* ホバー時の変化を完全にオフ */
+}
+
+/* ホバー時の枠線変化を削除（もし残っていたらここを上書き） */
+.rank-card:hover { 
+    border-color: #e9ecef !important; 
+}
+/* --- ランキング：金銀銅の輝きを復活 --- */
+
+/* 1位（金）: 子要素の1番目がタイトル、2番目からがカードなので nth-child(2) */
+#ranking-container .rank-card:nth-child(2) .rank-num {
+    background: linear-gradient(135deg, #FFD700, #DAA520);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0px 1px 1px rgba(0,0,0,0.1));
+}
+
+/* 2位（銀） */
+#ranking-container .rank-card:nth-child(3) .rank-num {
+    background: linear-gradient(135deg, #C0C0C0, #8E8E8E);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* 3位（銅） */
+#ranking-container .rank-card:nth-child(4) .rank-num {
+    background: linear-gradient(135deg, #CD7F32, #A0522D);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* 共通：順位の数字をより力強く */
+/* ランキングの数字の背景を調整 */
+.rank-num {
+    background: none !important; /* 背景色を消す */
+    color: #555;                /* 文字色を落ち着かせる */
+    font-weight: bold;
+    font-size: 1.2rem;
+    min-width: 25px;
+    text-align: center;
+}
+
+/* 作品名リンク（ここだけ反応させる） */
+.project-name-link {
+    text-decoration: none;
+    display: inline-block;
+}
+
+.project-name-link:hover .project-name {
+    color: #4d97ff !important;
+    text-decoration: underline;
+}
+
+.project-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: #333;
+    line-height: 1.4;
+    transition: color 0.2s;
+}
+
+.project-stats {
+    font-size: 12px;
+    color: #6c757d;
+    margin-top: 4px;
+}
+/* ボタンの親コンテナ */
+.action-bar-container {
+    display: flex;
+    gap: 10px;          /* ボタン同士の隙間 */
+    padding: 10px;      /* 左右の余白 */
+    width: 100%;        /* 親要素に対して横幅いっぱい */
+    box-sizing: border-box;
+}
+
+/* ボタン本体のデザイン */
+.btn-action {
+    flex: 1;            /* 2つのボタンで横幅を半分ずつ分け合う */
+    height: 40px;       /* 押しやすい高さ */
+    border: none;
+    background-color: #4d97ff; /* Scratchブルー */
+    color: white;
+    font-weight: bold;
+    font-size: 13px;
+    cursor: pointer;
+    
+    /* 角丸の設定（R） */
+    border-radius: 12px; 
+    
+    /* 影をつけて少し立体的に（Ultra感） */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.2s ease;
+}
+
+/* ホバー（マウスを乗せた時）の演出 */
+.btn-action:hover {
+    background-color: #3373cc;
+    transform: translateY(-1px); /* 少し浮き上がる */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* クリックした時 */
+.btn-action:active {
+    transform: translateY(1px);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}

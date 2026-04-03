@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/stats.css">
+    <link rel="stylesheet" href="css/list.css">
+</head>
+<body>
+    <div class="header">
+  <span class="header-title">Scratch Analyzer</span>
+        <div class="unit-toggle-container">
+            <span class="lang-text">日本語</span>
+            <label class="switch">
+                <input type="checkbox" id="lang-toggle">
+                <span class="slider"></span>
+            </label>
+        </div>
+    </div>
+
+ <div class="tab-menu">
+        <div class="tab-btn active" data-tab="stats">統計</div>
+        <div class="tab-btn" data-tab="list">リスト</div>
+    </div>
+
+    <div class="main-content">
+        <div id="stats" class="tab-content active">
+            <div id="action-bar" class="action-bar-container">
+                <button id="copy-stats" class="btn-action">📋 文字でコピー</button>
+                <button id="save-image" class="btn-action">🖼️ 画像で保存</button>
+            </div>
+
+            <div id="stats-content">
+                <div id="profile-area"></div>
+                <div class="grid" id="stats-grid"></div>
+                <div id="ranking-container"></div>
+            </div>
+        </div>
+
+        <div id="list" class="tab-content">
+            <div id="list-container"></div>
+        </div>
+    </div>
+<script src="html2canvas.min.js"></script>
+
+<script type="module" src="js_main/main.js"></script>
+</html>

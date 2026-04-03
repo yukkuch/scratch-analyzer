@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Scratch Analyzer",
+  "version": "1.0",
+  "permissions": ["activeTab", "storage", "scripting"],
+  "host_permissions": [
+    "https://scratch.mit.edu/*",
+    "https://api.scratch.mit.edu/*",
+    "https://uploads.scratch.mit.edu/*"
+  ],
+  "background": {
+    "service_worker": "js_main/background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "128": "icon.png"
+    }
+  },
+  "icons": {
+    "128": "icon.png"
+  }
+}

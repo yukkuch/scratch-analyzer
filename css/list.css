@@ -1,0 +1,165 @@
+/* ==========================================
+   1. 検索・フィルター（色分けデザインを完全復元）
+   ========================================== */
+.search-filter-wrapper {
+    background-color: white;
+    border-radius: 12px;
+    padding: 12px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border: 1px solid #eee;
+    box-sizing: border-box;
+}
+
+#user-search {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box;
+    background-color: #fafafa;
+}
+
+.filter-container { display: flex; gap: 4px; }
+
+/* 🚀 各フィルターの固有色設定を復元 */
+.filter-btn {
+    flex: 1; border: none; padding: 8px 0; border-radius: 6px;
+    cursor: pointer; font-size: 11px; font-weight: bold; color: white !important;
+    opacity: 0.4; transition: 0.2s;
+}
+
+.filter-btn.active { opacity: 1 !important; }
+
+/* 🎨 以前のカラーコードを100%復元 */
+.filter-btn[data-filter="all"] { background-color: #666 !important; }
+.filter-btn[data-filter="mutual"] { background-color: #28a745 !important; }
+.filter-btn[data-filter="following"] { background-color: #ffc107 !important; }
+.filter-btn[data-filter="followers"] { background-color: #dc3545 !important; }
+
+/* ==========================================
+   2. レイアウト（上下段共通 5行リミット）
+   ========================================== */
+.double-scroll-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.section-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.scroll-box {
+    max-height: 200px; /* 1行40px × 5行分 */
+    height: auto; 
+    overflow-y: auto !important;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fff;
+}
+
+.section-title {
+    font-weight: bold;
+    padding: 4px 0 !important;
+    margin: 0 !important;
+    font-size: 13px;
+    color: #000 !important;
+    background: transparent !important;
+}
+
+/* ==========================================
+   3. ユーザー項目（1行40px・リンク正常化）
+   ========================================== */
+.user-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #fff;
+    height: 40px; 
+    padding: 0 12px;
+    box-sizing: border-box;
+}
+
+.user-name-link { text-decoration: none !important; color: inherit !important; }
+.user-name-mini { font-size: 14px; font-weight: 600; color: #3c4043 !important; }
+.user-name-link:hover .user-name-mini { color: #1a73e8 !important; text-decoration: underline !important; }
+
+.user-avatar-mini { width: 26px !important; height: 26px !important; border-radius: 6px; }
+
+/* ==========================================
+   4. プルダウン（詳細エリア：文字大・余白狭め）
+   ========================================== */
+.user-details {
+    display: none;
+    background: #f8f9fa;
+    font-size: 13px;
+    color: #444;
+    padding: 8px 15px 8px 40px;
+    margin: 2px 4px 4px 4px;
+    border-radius: 6px;
+    line-height: 1.4;
+}
+.user-row.open .user-details { display: block !important; }
+
+/* 🚀 矢印ボタンの基本スタイルとホバー設定 */
+.expand-btn {
+    width: 32px; 
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px; /* 角丸のグレー枠になります */
+    cursor: pointer;
+    transition: background-color 0.2s ease; /* グレー枠がふわっと出るように */
+    user-select: none;
+}
+
+/* 🚀 マウスを合わせた時（ホバー）にグレーの枠を表示 */
+.expand-btn:hover {
+    background-color: rgba(60, 64, 67, 0.1) !important; /* ほんのりとしたグレー */
+}
+
+/* 中の「矢印アイコン」自体の回転設定（維持） */
+.arrow-icon {
+    display: inline-block;
+    transition: transform 0.2s ease;
+    transform: rotate(0deg);
+}
+
+/* 行が開いた（openクラスがついた）とき（維持） */
+.user-row.open .arrow-icon {
+    transform: rotate(90deg);
+}
+
+/* ==========================================
+   5. スクロールバー（細身デザイン）
+   ========================================== */
+.scroll-box::-webkit-scrollbar { width: 6px; }
+.scroll-box::-webkit-scrollbar-track { background: transparent; }
+.scroll-box::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.15); border-radius: 10px; }
+.scroll-box::-webkit-scrollbar-thumb:hover { background: rgba(0, 0, 0, 0.3); }
+/* 🚀 順次追加される行がパッと出ずに、ふわっと現れるようにする */
+.user-row {
+    animation: fadeIn 0.3s ease forwards;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(5px); /* 少し下から浮き上がる */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 描画中のレイアウト崩れを防ぐ */
+.scroll-box {
+    min-height: 40px; /* 1行目が出るまでの最低限の高さ */
+    contain: content; /* ブラウザの再描画コストを下げる（高速化） */
+}

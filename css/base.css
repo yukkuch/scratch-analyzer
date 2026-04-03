@@ -1,0 +1,47 @@
+body { width: 420px; margin: 0; font-family: "Helvetica Neue", Arial, sans-serif; background: #f0f2f5; }
+
+/* ヘッダー */
+.header {
+    background: #4d97ff; padding: 12px 16px; display: flex;
+    justify-content: space-between; align-items: center; color: white;
+}
+.header-title { font-weight: 800; font-size: 16px; }
+
+/* 言語スイッチ */
+.unit-toggle-container { display: flex; align-items: center; gap: 8px; font-size: 12px; }
+.switch { position: relative; display: inline-block; width: 34px; height: 18px; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider {
+    position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #85b7ff; transition: .4s; border-radius: 34px;
+}
+.slider:before {
+    position: absolute; content: ""; height: 14px; width: 14px; left: 2px; bottom: 2px;
+    background-color: white; transition: .4s; border-radius: 50%;
+}
+input:checked + .slider { background-color: #0059d6; }
+input:checked + .slider:before { transform: translateX(16px); }
+
+/* タブメニュー */
+.tab-menu { display: flex; background: white; border-bottom: 1px solid #e9ecef; }
+.tab-btn {
+    flex: 1; text-align: center; padding: 12px; font-size: 14px;
+    font-weight: bold; color: #868e96; cursor: pointer; transition: 0.2s;
+}
+.tab-btn.active { color: #4d97ff; border-bottom: 3px solid #4d97ff; }
+
+/* コンテンツ表示切り替え */
+.tab-content { display: none; padding: 14px; }
+.tab-content.active { display: block; }
+/* 警告・通知メッセージ用のスタイル */
+.status-message {
+    padding: 10px;
+    color: #6c5ce7; /* ここでお好きな色を指定！青紫系ならこれ */
+    font-size: 13px;
+    font-weight: bold;
+    white-space: nowrap;
+    text-align: center;
+    background: #eef2ff; /* 薄い背景色をつけると「Ultra」感が出ます */
+    border-radius: 6px;
+    margin: 10px 0;
+}
